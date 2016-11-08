@@ -1,19 +1,19 @@
 {
-  "name": "PLUGIN_NAME",
+  "name": "postcss-parent-selector",
   "version": "0.0.0",
-  "description": "PostCSS plugin PLUGIN_DESC",
+  "description": "PostCSS plugin for adding a parent selector to all rules in a css file.",
   "keywords": [
     "postcss",
     "css",
-    "postcss-plugin"KEYWORDS
+    "postcss-plugin"
   ],
-  "author": "AUTHOR_NAME <AUTHOR_EMAIL>",
+  "author": "Dominick Washburn <domwashburn@gmail.com>",
   "license": "MIT",
-  "repository": "GITHUB_NAME/PLUGIN_NAME",
+  "repository": "domwashburn/postcss-parent-selector",
   "bugs": {
-    "url": "https://github.com/GITHUB_NAME/PLUGIN_NAME/issues"
+    "url": "https://github.com/domwashburn/postcss-parent-selector/issues"
   },
-  "homepage": "https://github.com/GITHUB_NAME/PLUGIN_NAME",
+  "homepage": "https://github.com/domwashburn/postcss-parent-selector",
   "dependencies": {
     "postcss": "^5.2.5"
   },
