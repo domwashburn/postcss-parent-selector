@@ -14,8 +14,8 @@ function run(t, input, output, opts = { }) {
 test('selector is added to all rules', t => {
     return run(
         t,
-        '.foo, .bar, .baz { }',
-        '.parent-class .foo, .parent-class .bar, .parent-class .baz { }',
+        '.foo, bar .baz, .buzz { }',
+        '.parent-class .foo, .parent-class bar .baz, .parent-class .buzz { }',
         { selector: '.parent-class' });
 });
 

@@ -4,7 +4,6 @@ module.exports = postcss.plugin('postcss-parent-selector', function (opts) {
     opts = opts || {};
 
     // Work with options here
-
     return function (root /* , result*/ ) {
         root.walkRules(rule => {
             if (rule.parent && rule.parent.type === 'atrule' &&
