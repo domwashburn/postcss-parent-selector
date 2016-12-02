@@ -10,7 +10,7 @@
   ],
   "author": "Dominick Washburn <domwashburn@gmail.com>",
   "license": "MIT",
-  "repository": "domwashburn/postcss-parent-selector",
+  "repository": "https://github.com/domwashburn/postcss-parent-selector",
   "bugs": {
     "url": "https://github.com/domwashburn/postcss-parent-selector/issues"
   },

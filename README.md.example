@@ -1,27 +1,5 @@
-# PLUGIN_TITLE [![Build Status][ci-img]][ci]
+10. Fork [PostCSS](https://github.com/postcss/postcss), add your plugin to
+    [Plugins section](https://github.com/postcss/postcss/blob/master/docs/plugins.md)
+    in `README.md`, and send a pull request.
 
-[PostCSS] plugin PLUGIN_DESC.
-
-[PostCSS]: https://github.com/postcss/postcss
-[ci-img]:  https://travis-ci.org/GITHUB_NAME/PLUGIN_NAME.svg
-[ci]:      https://travis-ci.org/GITHUB_NAME/PLUGIN_NAME
-
-```css
-.foo {
-    /* Input example */
-}
-```
-
-```css
-.foo {
-  /* Output example */
-}
-```
-
-## Usage
-
-```js
-postcss([ require('PLUGIN_NAME') ])
-```
-
-See [PostCSS] docs for examples for your environment.
+11. Follow [@PostCSS](https://twitter.com/postcss) to get the latest updates.

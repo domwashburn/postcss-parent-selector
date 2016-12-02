@@ -1,42 +1,96 @@
-# PostCSS Plugin Boilerplate
+# postcss-parent-selector [![Build Status][ci-img]][ci]
 
-<img align="right" width="135" height="95"
-     title="Philosopher’s stone, logo of PostCSS"
-     src="http://postcss.github.io/postcss/logo-leftp.svg">
+[PostCSS] plugin for adding a parent selector to all rules in a CSS file.
 
-Сreate new PostCSS plugins in a few steps:
+[PostCSS]: https://github.com/postcss/postcss
+[ci-img]:  https://travis-ci.org/domwashburn/postcss-parent-selector.svg
+[ci]:      https://travis-ci.org/domwashburn/postcss-parent-selector
 
-1. Clone this repository:
+## Example
 
-   ```sh
-  git clone https://github.com/postcss/postcss-plugin-boilerplate.git
-   ```
+**Options:**
 
-2. Execute the wizard script. It will ask you a few questions
-   and fill all files with your data.
+```js
+{selector: '.parent'}
+```
 
-    ```sh
-   node ./postcss-plugin-boilerplate/start
-    ```
+**Input CSS:**
 
-3. Your plugin repository will now have a clean Git history.
-   [Create the GitHub repository](https://github.com/new)
-   and push your project there.
+```css
+.foo {
+    /* Input example */
+}
 
-4. Add your project to [Travis CI](https://travis-ci.org).
 
-5. Write some code to `index.js` and tests to `test.js`.
+.foo .bar,
+div.foo .bar {
+    /* Input example */
+}
+```
+**Output CSS:**
 
-6. Execute `npm test` command
+```css
+.parent .foo {
+    /* Input example */
+}
 
-7. Add input and output CSS examples to `README.md`.
 
-8. Add options descriptions if your plugin has them.
+.parent .foo .bar,
+.parent div.foo .bar {
+    /* Input example */
+}
+```
+## Options
+The `selector` option takes a string value that should be placed at the beginning of each selector, including selector lists separated by commas.
 
-9. Fill `CHANGELOG.md` with initial version and release it to npm.
+```js
+// class
+{selector: '.parent-class'}
 
-10. Fork [PostCSS](https://github.com/postcss/postcss), add your plugin to
-    [Plugins section](https://github.com/postcss/postcss/blob/master/docs/plugins.md)
-    in `README.md`, and send a pull request.
+// id
+{selector: '#parent-id'}
 
-11. Follow [@PostCSS](https://twitter.com/postcss) to get the latest updates.
+// element
+{selector: 'div.parent-class'}
+```
+
+
+
+## Usage
+```js
+postcss([ require('postcss-parent-selector') ])
+```
+
+See [PostCSS] docs for examples for your environment.
+
+### Gulp.js _( with babel )_
+
+```js
+import gulp from 'gulp';
+import plumber from 'gulp-plumber';
+import sass from 'gulp-sass';
+import postcss from 'gulp-postcss';
+import parentSelector from 'postcss-parent-selector';
+
+gulp.task('styles', () => {
+
+     // array containing postcss plugins
+    var processors = [
+        parentSelector({selector: '.parent'})
+    ];
+
+    // source compiled css or scss files
+    return gulp.src('./path/to/*.scss')
+        .pipe(plumber())
+        // scss compiling
+        .pipe(sass.sync({
+            outputStyle: 'expanded',
+            precision: 10,
+            includePaths: ['.']
+        }).on('error', sass.logError))
+        // postcss processes the compiled css
+        .pipe(postcss(processors))
+        .pipe(gulp.dest('./path/to/dest'))
+        .pipe(reload({ stream: true }));
+});
+```
