@@ -1,7 +1,7 @@
 import postcss from 'postcss';
-import test    from 'ava';
+import test from 'ava';
 
-import plugin from './';
+import plugin from './index.js';
 
 function run(t, input, output, opts = { }) {
     return postcss([ plugin(opts) ]).process(input)
@@ -11,10 +11,27 @@ function run(t, input, output, opts = { }) {
         });
 }
 
-/* Write tests here
-
-test('does something', t => {
-    return run(t, 'a{ }', 'a{ }', { });
+test('selector is added to all rules', t => {
+    return run(
+        t,
+        '.foo, .bar, .baz { }',
+        '.parent-class .foo, .parent-class .bar, .parent-class .baz { }',
+        { selector: '.parent-class' });
 });
 
-*/
+test('selector not added when rule starts with defined selector', t => {
+    return run(
+        t,
+        '.parent-class, .foo { }',
+        '.parent-class, .parent-class .foo { }',
+        { selector: '.parent-class' });
+});
+
+test('does not add parent class to keyframes names', t => {
+    return run(
+        t,
+        '@keyframes foo { }',
+        '@keyframes foo { }',
+        { selector: '.parent-class' });
+});
+
