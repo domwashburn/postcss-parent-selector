@@ -15,16 +15,16 @@ test('selector is added to all rules', t => {
     return run(
         t,
         '.foo, bar .baz, .buzz .bam { }',
-        '.parent-class .foo, .parent-class bar .baz, .parent-class .buzz .bam { }',
-        { selector: '.parent-class' });
+        '.parent .foo, .parent bar .baz, .parent .buzz .bam { }',
+        { selector: '.parent' });
 });
 
 test('selector not added when rule starts with defined selector', t => {
     return run(
         t,
-        '.parent-class, .foo { }',
-        '.parent-class, .parent-class .foo { }',
-        { selector: '.parent-class' });
+        '.parent, .foo { }',
+        '.parent, .parent .foo { }',
+        { selector: '.parent' });
 });
 
 test('does not add parent class to keyframes names', t => {
@@ -32,6 +32,6 @@ test('does not add parent class to keyframes names', t => {
         t,
         '@keyframes foo { }',
         '@keyframes foo { }',
-        { selector: '.parent-class' });
+        { selector: '.parent' });
 });
 
