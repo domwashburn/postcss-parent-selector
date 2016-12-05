@@ -24,20 +24,20 @@
 
 .foo .bar,
 div.foo .bar {
-    /* Output example */
+    /* Input example */
 }
 ```
 **Output CSS:**
 
 ```css
 .parent .foo {
-    /* Input example */
+    /* Output example */
 }
 
 
 .parent .foo .bar,
 .parent div.foo .bar {
-    /* Input example */
+    /* Output example */
 }
 ```
 ## Options
