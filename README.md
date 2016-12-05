@@ -24,7 +24,7 @@
 
 .foo .bar,
 div.foo .bar {
-    /* Input example */
+    /* Output example */
 }
 ```
 **Output CSS:**
