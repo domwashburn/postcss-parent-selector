@@ -11,7 +11,7 @@
 **Options:**
 
 ```js
-{selector: '.parent'}
+{selector: '.parent', ignoredSelectors: ['.do-not-prefix-me']}
 ```
 
 **Input CSS:**
@@ -54,7 +54,7 @@ The `selector` option takes a string value that should be placed at the beginnin
 {selector: 'div.parent-class'}
 ```
 
-The `ignoredSelector` option takes an array value that contains all selectors that should not be prefixed by given `selector` (see above).
+The `ignoredSelectors` option takes an array value that contains all selectors that should not be prefixed by given `selector` (see above).
 ```js
 // element
 {ignoredSelectors: ['.do-not-prefix-me']}
