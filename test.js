@@ -35,3 +35,19 @@ test('does not add parent class to keyframes names', t => {
         { selector: '.parent' });
 });
 
+
+test('does not add parent class to an ignored selector', t => {
+    return run(
+        t,
+        '* { }',
+        '* { }',
+        { selector: '.parent', ignoredSelectors:['*'] });
+});
+
+test('selector is added to rule if ignoredSelector is not strict equal', t => {
+    return run(
+        t,
+        '.foo * { }',
+        '.parent .foo * { }',
+        { selector: '.parent', ignoredSelectors:['*'] });
+});
