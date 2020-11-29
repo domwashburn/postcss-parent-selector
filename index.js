@@ -22,11 +22,6 @@ module.exports = postcss.plugin('postcss-parent-selector', function (opts) {
                     if (Array.isArray(opts.appendTo) && opts.appendTo.includes(selector)) {
                         return `${selector}${opts.selector}`;
                     }
-                    
-                    // Certain rules for prepending a selector to another 
-                    if (Array.isArray(opts.prependTo) && opts.prependTo.includes(selector)) {
-                        return `${opts.selector}${selector}`;
-                    }
 
                     // Return new selector
                     return `${opts.selector} ${selector}`;
