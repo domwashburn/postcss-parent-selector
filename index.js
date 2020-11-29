@@ -14,11 +14,17 @@ module.exports = postcss.plugin('postcss-parent-selector', function (opts) {
                 return selectors.split(/,[\s]* /g).map( selector => {
                     // don't add the parent class to a rule that is
                     // exactly equal to the one defined by the user
-                    if ( selector === opts.selector ) {
+                    if (selector === opts.selector || (Array.isArray(opts.exceptions) && opts.exceptions.includes(selector))) {
                         return selector;
                     }
-                    var newsSelector = `${opts.selector} ${selector}`;
-                    return newsSelector;
+                    
+                    // Certain rules for appending a selector to another 
+                    if (Array.isArray(opts.appendTo) && opts.appendTo.includes(selector)) {
+                        return `${selector}${opts.selector}`;
+                    }
+
+                    // Return new selector
+                    return `${opts.selector} ${selector}`;
                 });
             });
         });
