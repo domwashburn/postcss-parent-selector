@@ -54,6 +54,40 @@ The `selector` option takes a string value that should be placed at the beginnin
 {selector: 'div.parent-class'}
 ```
 
+The `exceptions` option takes an array of string values that should be ignored. This can serve useful if you have a `body` or `html` selector in your css file.
+
+```js
+// input
+{selector: '.parent', excetions: ['body', 'html']}
+```
+
+```css
+.parent .foo {
+    /* Output example */
+}
+
+body {
+    /* Output example */
+}
+```
+
+The `appendTo` option takes an array of string values on which you want the new selector to applied.
+
+```js
+// input
+{selector: '.parent', appendTo: ['body']}
+```
+
+```css
+.parent .foo {
+    /* Output example */
+}
+
+body.parent {
+    /* Output example */
+}
+```
+
 
 
 ## Usage
